@@ -18,3 +18,7 @@ maven
 # 忽略 build，但不忽略 src 下的 build
 build
 !**/src/**/build
+release
+!**/src/**/release
+.idea
+.kotlin

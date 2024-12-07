@@ -1,15 +1,16 @@
 plugins {
-  id("module-manager")
+  id("manager.library")
 }
 
-dependLibBase()
-dependLibUtils()
-dependLibConfig()
-
-dependRxjava()
-dependNetwork()
+useARouter()
 
 dependencies {
-  // 一个保存 Cookie 的第三方库
+  implementation(projects.libBase)
+  implementation(projects.libUtils)
+  implementation(projects.libConfig)
+  implementation(projects.libAccount.apiAccount)
+
+  implementation(libs.bundles.network)
+
   implementation("com.github.franmontiel:PersistentCookieJar:v1.0.1")
 }

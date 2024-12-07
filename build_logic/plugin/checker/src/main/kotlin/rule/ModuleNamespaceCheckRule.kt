@@ -1,6 +1,5 @@
-package check.rule
+package rule
 
-import check.ICheckRule
 import org.gradle.api.Project
 import java.io.File
 
@@ -10,8 +9,8 @@ import java.io.File
  * @author 985892345
  * 2022/12/20 17:42
  */
-object ModuleNamespaceCheckRule : ICheckRule {
-  
+object ModuleNamespaceCheckRule : AndroidProjectChecker.ICheckRule {
+
   /**
    * 得到正确的 namespace
    *
@@ -20,13 +19,13 @@ object ModuleNamespaceCheckRule : ICheckRule {
   fun getCorrectNamespace(project: Project): String {
     return getPackagePrefix(project) + project.name.replace("_", ".")
   }
-  
+
   // 得到包命名前缀
   private fun getPackagePrefix(project: Project): String {
     return "com.ndhzs."
   }
   
-  override fun onConfigBefore(project: Project) {
+  override fun onConfig(project: Project) {
     val namespace = getCorrectNamespace(project)
     val file = project.projectDir
       .resolve("src")
@@ -37,15 +36,18 @@ object ModuleNamespaceCheckRule : ICheckRule {
       val rule = """
         
         模块包名命名规范：
-          以 ${getPackagePrefix(project)}[module|lib|api].xxx 包名命名。如：module_course 为 ${getPackagePrefix(project)}module.course
+        1、一级模块
+          一级模块以 com.mredrock.cyxbs.xxx 包名命名。如：module_course 为 com.mredrock.cyxbs.course
+        2、二级模块
+          一级模块以 com.mredrock.cyxbs.[module|lib|api].xxx 包名命名。如：api_course 为 com.mredrock.cyxbs.api.course
           
         你当前 ${project.name} 模块的包名应该改为：$namespace
+        ${project.projectDir}
+        
+        TODO 如果你用该项目进行其他项目开发，但又不想使用本项目统一的包名，你可以修改以下该方法 build_logic/plugin/checker 模块下的 ModuleNamespaceCheckRule
         
       """.trimIndent()
       throw RuntimeException("${project.name} 模块包名错误！" + rule)
     }
-  }
-  
-  override fun onConfigAfter(project: Project) {
   }
 }

@@ -60,7 +60,7 @@ class WanAndroidToast {
         val throwable = Throwable() // 获取堆栈信息
         val path = throwable.stackTrace
           .toMutableList()
-          .apply { removeFirst() } // 从堆栈中去掉当前方法
+          .apply { removeAt(0) } // 从堆栈中去掉当前方法
           .filter {
             // 第一次先筛选出是自己代码中的方法栈
             !it.isNativeMethod

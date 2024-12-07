@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+// 开启模块的简化依赖方式，例如：module.course.api.course
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 pluginManagement {
   repositories {
     includeBuild(".")
@@ -28,13 +31,11 @@ dependencyResolutionManagement {
     }
   }
 }
+
 rootProject.name = "build_logic"
-// 核心插件模块
-include(":core")
-include(":core:manager")
-include(":core:project")
-include(":core:versions")
-// 其他业务插件
+// 项目模块插件
+include(":manager")
+//其他业务插件
 include(":plugin")
 include(":plugin:cache")
 include(":plugin:checker")

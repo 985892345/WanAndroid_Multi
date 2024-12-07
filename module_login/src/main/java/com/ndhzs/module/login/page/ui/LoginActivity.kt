@@ -6,7 +6,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.ndhzs.lib.base.ui.BaseBindActivity
 import com.ndhzs.lib.config.route.LOGIN_ENTRY
 import com.ndhzs.lib.utils.extensions.setOnSingleClickListener
-import com.ndhzs.module.login.R
 import com.ndhzs.module.login.databinding.LoginActivityLoginBinding
 import com.ndhzs.module.login.page.viewmodel.LoginViewModel
 import com.ndhzs.module.login.utils.textwatcher.BaseTextWatcher
@@ -18,16 +17,6 @@ class LoginActivity : BaseBindActivity<LoginActivityLoginBinding>() {
   // 如果需要带参数，你可以看看 BaseActivity 上的头注释
   private val mViewModel by viewModels<LoginViewModel>()
 
-  override fun onSetContentViewBefore() {
-    super.onSetContentViewBefore()
-    android.util.Log.d("ggg", "(${Exception().stackTrace[0].run { "$fileName:$lineNumber" }}) -> " +
-      "layoutInflater = $layoutInflater")
-    val bind: LoginActivityLoginBinding? = LoginActivityLoginBinding.inflate(layoutInflater)
-    android.util.Log.d("ggg", "(${Exception().stackTrace[0].run { "$fileName:$lineNumber" }}) -> " +
-      "bind = $bind")
-    R.layout.login_activity_login
-  }
-  
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // 分离每个初始化功能，别只会全写在 onCreate 中

@@ -1,16 +1,17 @@
 plugins {
-  id("module-manager")
+  id("manager.library")
 }
 
-dependLibUtils()
-dependLibConfig()
-
-dependApiAccount()
-
-dependCoroutines()
-dependRxjava()
+useARouter(false) // lib_base 模块不包含实现类，不需要处理注解
+useDataBinding(false) // lib_base 模块只依赖 DataBinding 但不开启 DataBinding
 
 dependencies {
-  implementation(Network.okhttp) // 为了拿到 CookieJar
-  api(project(":api_init"))
+  implementation(projects.apiInit)
+  implementation(projects.libUtils)
+  implementation(projects.libConfig)
+  implementation(projects.libAccount.apiAccount)
+
+  implementation(libs.bundles.projectBase)
+  implementation(libs.bundles.views)
+  implementation(libs.bundles.network)
 }

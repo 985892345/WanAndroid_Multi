@@ -1,13 +1,12 @@
 plugins {
-  id("module-manager")
+  id("manager.library")
 }
 
-dependApiInit()
-
-dependRxjava()
+useAutoService()
 
 dependencies {
-  implementation(Android.appcompat)
-  implementation(Android.constraintlayout)
-  implementation(Android.material)
+  implementation(projects.apiInit)
+  implementation(libs.androidx.appcompat)
+  implementation(libs.androidx.constraintlayout)
+  implementation(libs.material)
 }

@@ -1,10 +1,345 @@
+# 留给后人：
+# 掌邮的依赖建议每隔一年就升级一次，对于升级的方式有以下两种：
+## 1、Gradle Dependency Updates 插件
+# AS 下载 Gradle Dependency Updates 插件，插件主页：https://plugins.jetbrains.com/plugin/14243-gradle-dependency-updates
+#
+# 该插件会自动检查所有模块的依赖版本，比较智能
+#
+## 2、手动查询
+# - 每个依赖我都贴心的给出了官网地址，可以快速查到最新版本号
+# - 也可以在该网站中寻找到所有仓库的依赖：https://mvnrepository.com/
+#
+#  注意：
+# - 如果你要添加其他依赖，请贴出官网地址，方便后人查找
+# - 依赖一定要经常升级，不然到后面一起升很麻烦
+#
+# @author 985892345
+# @date 2024/11/17 18:52
+
+
 [versions]
-androidGradlePlugin = "8.0.1"
-kotlin = "1.8.21"
-ksp = "1.8.21-1.0.11"
+javaTarget = "11" # 17 目前 R8 还不支持 sealed，暂时不升级
+kotlinJvmTarget = "11"
+####################################################################################################
+#                                            Android
+####################################################################################################
+agp = "8.7.3"
+android-compileSdk = "35"
+android-minSdk = "24"
+android-targetSdk = "35"
+# https://developer.android.com/jetpack/androidx/releases/appcompat
+androidx-appcompat = "1.7.0"
+# https://developer.android.com/jetpack/androidx/releases/lifecycle
+androidx-lifecycle = "2.8.7"
+# https://developer.android.com/jetpack/androidx/releases/core
+androidx-core-ktx = "1.15.0"
+# https://developer.android.com/jetpack/androidx/releases/core
+androidx-core-animation = "1.0.0"
+# https://developer.android.com/kotlin/ktx/extensions-list#androidxcollection
+androidx-collection-ktx = "1.4.5"
+# https://developer.android.com/jetpack/androidx/releases/fragment
+androidx-fragment-ktx = "1.8.5"
+# https://developer.android.com/jetpack/androidx/releases/activity
+androidx-activity-ktx = "1.9.3"
+# https://mvnrepository.com/artifact/androidx.databinding/databinding-runtime
+androidx-databinding = "8.7.3"
+# https://developer.android.com/jetpack/androidx/releases/paging
+androidx-paging = "3.3.4"
+# https://developer.android.com/jetpack/androidx/releases/room
+androidx-room = "2.6.1"
+# https://developer.android.com/jetpack/androidx/releases/work
+androidx-work = "2.10.0"
+
+####################################################################################################
+#                                              控件
+####################################################################################################
+# https://developer.android.com/jetpack/androidx/releases/constraintlayout
+androidx-constraintlayout = "2.2.0"
+# https://developer.android.com/jetpack/androidx/releases/recyclerview
+androidx-recyclerview = "1.3.2"
+# https://developer.android.com/jetpack/androidx/releases/cardview
+androidx-cardview = "1.0.0"
+# https://developer.android.com/jetpack/androidx/releases/viewpager2
+androidx-viewpager2 = "1.1.0"
+# https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout
+androidx-swiperefreshlayout = "1.1.0"
+# https://github.com/material-components/material-components-android
+material = "1.12.0"
+# https://github.com/google/flexbox-layout
+flexbox = "3.0.0"
+# https://lottiefiles.com/blog/working-with-lottie/getting-started-with-lottie-animations-in-android-app
+# 最新版本号请查看：https://mvnrepository.com/artifact/com.airbnb.android/lottie
+lottie = "6.6.0"
+# https://github.com/Baseflow/PhotoView
+# 查看图片的控件，支持双指缩放，但最后更新是 17 年
+photoView = "2.3.0"
+# https://github.com/985892345/NetLayout
+# 20 级郭祥瑞封装的课表底层控件，如果有问题，欢迎来联系 👀
+netLayout = "1.1.1-SNAPSHOT"
+# https://github.com/985892345/SlideShow
+# 20 级郭祥瑞封装的 Banner 库，如果有问题，欢迎来联系 👀
+slideShow = "2.0.1"
+# https://github.com/scwang90/SmartRefreshLayout
+smartRefreshLayout = "2.1.0"
+# https://github.com/afollestad/material-dialogs
+dialog = "3.3.0" # 作者已停止维护
+# https://github.com/AigeStudio/WheelPicker
+# 一个滚轮选择器
+wheelPicker = "1.1.3"
+# https://github.com/wangjiegulu/WheelView
+# 有是一个滚轮选择器（为什么会有多个？我也不知道，但这个 17 年后就没维护了）
+wheelView = "4.1.9"
+
+####################################################################################################
+#                                              Kotlin
+####################################################################################################
+# https://github.com/JetBrains/kotlin/releases
+kotlin = "2.1.0"
+# https://github.com/google/ksp/releases
+ksp = "2.1.0-1.0.29" # ksp 版本与 kotlin 版本强绑定，升级 kotlin 记得去更 ksp
+# https://github.com/Kotlin/kotlinx.coroutines
+kotlinx-coroutines = "1.9.0"
+# https://github.com/Kotlin/kotlinx.collections.immutable
+kotlinx-collections = "0.3.8"
+# https://github.com/Kotlin/kotlinx.serialization
+kotlinx-serialization = "1.7.3"
+
+####################################################################################################
+#                                               三方库
+####################################################################################################
+# https://developer.umeng.com/docs/67966/detail/206987
+umeng-common = "9.7.8"
+umeng-asms = "1.8.4"
+umeng-push = "6.6.8"
+# https://github.com/Tencent/VasDolly
+vasdolly = "3.0.6"
+# https://github.com/alibaba/ARouter
+arouter = "1.5.2"
+# https://github.com/JailedBird/ArouterKspCompiler
+# ARouter 的第三方 ksp 实现
+arouter-ksp = "1.9.22-1.0.7"
+# https://github.com/google/auto
+autoService = "1.1.1"
+# 具体参考自官方文档 https://bugly.qq.com/v2/index
+# 其中掌邮接入了 异常上报 和 应用升级 两个功能，注意看完官网文档
+bugly = "latest.release"
+# https://github.com/greenrobot/EventBus
+eventBus = "3.3.1"
+# https://github.com/bumptech/glide/releases
+glide = "4.16.0"
+# https://github.com/limuyang2/LPhotoPicker
+# 一个图片选择框架（不知道为什么以前学长会选择这个）
+lPhotoPicker = "2.7"
+# https://github.com/Yalantis/uCrop
+# 一个裁剪图片的库
+ucrop = "2.2.9-native"
+# https://github.com/square/retrofit
+retrofit = "2.11.0"
+# https://github.com/square/okhttp
+okhttp = "4.12.0"
+# https://github.com/google/gson
+gson = "2.11.0"
+# https://github.com/ReactiveX/RxJava
+rxjava = "3.1.9"
+# https://github.com/ReactiveX/RxAndroid
+rxjava-android = "3.0.2"
+# https://github.com/ReactiveX/RxKotlin
+rxjava-kotlin = "3.0.1"
+# https://github.com/tbruyelle/RxPermissions
+rxpermissions = "0.12" # 作者 20 年已停止维护
+# https://github.com/square/leakcanary
+leakcanary = "2.13"
+# https://www.wanandroid.com/blog/show/2526
+pandora = "androidx_v2.1.0"
+# https://help.aliyun.com/document_detail/434554.html?spm=a2c4g.435252.0.0.1da95979yyEzm3
+# 阿里云httpdns依赖
+alicloud-httpdns = "2.5.0"
+# https://github.com/mozilla/rhino
+# js 引擎，支持与 java 直接进行交互
+rhino = "1.7.15"
+
+
 
 [libraries]
-# Dependencies of the included build-logic
-android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
-kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+####################################################################################################
+#                                              Android
+####################################################################################################
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-service = { module = "androidx.lifecycle:lifecycle-service", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-reactivestreams-ktx = { module = "androidx.lifecycle:lifecycle-reactivestreams-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androidx-lifecycle" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core-ktx" }
+androidx-core-animation = { module = "androidx.core:core-animation", version.ref = "androidx-core-animation" }
+androidx-collection-ktx = { module = "androidx.collection:collection-ktx", version.ref = "androidx-collection-ktx" }
+androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "androidx-fragment-ktx" }
+androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "androidx-activity-ktx" }
+
+######################################## 特殊依赖，少量模块引入 ########################################
+android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+androidx-databinding = { module = "androidx.databinding:databinding-runtime", version.ref = "androidx-databinding" }
+androidx-databinding-ktx = { module = "androidx.databinding:databinding-ktx", version.ref = "androidx-databinding" }
+androidx-paging = { module = "androidx.paging:paging-runtime", version.ref = "androidx-paging" }
+androidx-paging-rxjava = { module = "androidx.paging:paging-runtime-rxjava3", version.ref = "androidx-paging" }
+androidx-room = { module = "androidx.room:room-runtime", version.ref = "androidx-room" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "androidx-room" }
+androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "androidx-room" }
+androidx-room-rxjava = { module = "androidx.room:room-rxjava3", version.ref = "androidx-room" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidx-room" }
+androidx-work = { module = "androidx.work:work-runtime-ktx", version.ref = "androidx-work" }
+
+####################################################################################################
+#                                                控件
+####################################################################################################
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
+androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "androidx-recyclerview" }
+androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "androidx-cardview" }
+androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "androidx-viewpager2" }
+androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "androidx-swiperefreshlayout" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+flexbox = { module = "com.google.android.flexbox:flexbox", version.ref = "flexbox" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+netLayout = { module = "io.github.985892345:NetLayout", version.ref = "netLayout" }
+slideShow = { module = "io.github.985892345:SlideShow", version.ref = "slideShow" }
+photoView = { module = "com.github.chrisbanes:PhotoView", version.ref = "photoView" }
+dialog = { module = "com.afollestad.material-dialogs:core", version.ref = "dialog" }
+wheelPicker = { module = "cn.aigestudio.wheelpicker:WheelPicker", version.ref = "wheelPicker" }
+wheelView = { module = "com.github.gzu-liyujiang.AndroidPicker:WheelView", version.ref = "wheelView" }
+smartRefreshLayout = { module = "io.github.scwang90:refresh-layout-kernel", version.ref = "smartRefreshLayout" }
+smartRefreshLayout-header-classics = { module = "io.github.scwang90:refresh-header-classics", version.ref = "smartRefreshLayout" }      # 经典刷新头
+smartRefreshLayout-header-radar = { module = "io.github.scwang90:refresh-header-radar", version.ref = "smartRefreshLayout" }            # 雷达刷新头
+smartRefreshLayout-header-falsify = { module = "io.github.scwang90:refresh-header-falsify", version.ref = "smartRefreshLayout" }        # 虚拟刷新头
+smartRefreshLayout-header-material = { module = "io.github.scwang90:refresh-header-material", version.ref = "smartRefreshLayout" }      # 谷歌刷新头
+smartRefreshLayout-header-two-level = { module = "io.github.scwang90:refresh-header-two-level", version.ref = "smartRefreshLayout" }    # 二级刷新头
+smartRefreshLayout-footer-classics = { module = "io.github.scwang90:refresh-footer-classics", version.ref = "smartRefreshLayout" }      # 经典加载
+smartRefreshLayout-footer-ball = { module = "io.github.scwang90:refresh-footer-ball", version.ref = "smartRefreshLayout" }              # 球脉冲加载
+
+####################################################################################################
+#                                               Kotlin
+####################################################################################################
+# gradlePlugin 找不到的话可以进 pom 文件进行查看：https://repo1.maven.org/maven2/org/jetbrains/kotlin/plugin/
+kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+ksp-api = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-rx3 = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-rx3", version.ref = "kotlinx-coroutines" }                # 包含 Flow 与 Rxjava3 的互转
+kotlinx-collections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinx-collections" }
+kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+
+####################################################################################################
+#                                               三方库
+####################################################################################################
+
+######################################## 特殊依赖，少量模块引入 ########################################
+umeng = { module = "com.umeng.umsdk:common", version.ref = "umeng-common" }
+umeng-asms = { module = "com.umeng.umsdk:asms", version.ref = "umeng-asms" }
+umeng-push = { module = "com.umeng.umsdk:push", version.ref = "umeng-push" } # 友盟的 push 真能用吗？
+vasdolly = { module = "com.tencent.vasdolly:helper", version.ref = "vasdolly" }
+vasdolly-gradlePlugin = { module = "com.tencent.vasdolly:plugin", version.ref = "vasdolly" }
+bugly-crash = { module = "com.tencent.bugly:crashreport_upgrade", version.ref = "bugly" }
+bugly-crash-native = { module = "com.tencent.bugly:nativecrashreport", version.ref = "bugly" }
+lPhotoPicker = { module = "com.github.limuyang2:LPhotoPicker", version.ref = "lPhotoPicker" }           # 本地图片选择
+ucrop = { module = "com.github.yalantis:ucrop", version.ref = "ucrop" }                                 # 图片裁剪
+rxpermissions = { module = "com.github.tbruyelle:rxpermissions", version.ref = "rxpermissions" }        # 权限申请
+leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }      # 内存泄漏
+pandora = { module = "com.github.whataa:pandora", version.ref = "pandora" }         # 很牛逼的 debug 检测工具，debug 模式下摇一摇手机或者按三次手机中间顶部区域触发
+alicloud-httpdns = { module = "com.aliyun.ams:alicloud-android-httpdns", version.ref = "alicloud-httpdns" }     # 阿里云httpdns依赖
+rhino = { module = "org.mozilla:rhino", version.ref = "rhino" }         # js 引擎，支持与 java 直接进行交互
+
+####################################### 公有依赖，大部分模块使用 #######################################
+arouter = { module = "com.alibaba:arouter-api", version.ref = "arouter" }
+arouter-compiler = { module = "com.github.JailedBird:ArouterKspCompiler", version.ref = "arouter-ksp" }
+autoService = { module = "com.google.auto.service:auto-service-annotations", version.ref = "autoService" }
+autoService-compiler = { module = "com.google.auto.service:auto-service", version.ref = "autoService" }
+eventBus = { module = "org.greenrobot:eventbus", version.ref = "eventBus" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" } # todo 待移除
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+retrofit-converter-kotlinxSerialization = { module = "com.squareup.retrofit2:converter-kotlinx-serialization", version.ref = "retrofit" }
+retrofit-adapter-rxjava = { module = "com.squareup.retrofit2:adapter-rxjava3", version.ref = "retrofit" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+okhttp-logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+rxjava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxjava" }
+rxjava-android = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxjava-android" }
+rxjava-kotlin = { module = "io.reactivex.rxjava3:rxkotlin", version.ref = "rxjava-kotlin" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+vasdolly = { id = "com.tencent.vasdolly" }
+
+[bundles]
+projectBase = [
+    # Android 基础依赖
+    "androidx-appcompat",
+    "androidx-lifecycle-runtime-ktx",
+    "androidx-lifecycle-process",
+    "androidx-lifecycle-service",
+    "androidx-lifecycle-reactivestreams-ktx",
+    "androidx-lifecycle-viewmodel-ktx",
+    "androidx-lifecycle-viewmodel-savedstate",
+    "androidx-lifecycle-livedata-ktx",
+    "androidx-core-ktx",
+    "androidx-core-animation",
+    "androidx-collection-ktx",
+    "androidx-fragment-ktx",
+    "androidx-activity-ktx",
+    # Kotlin 基础依赖
+    "kotlinx-coroutines",
+    "kotlinx-coroutines-android",
+    "kotlinx-coroutines-rx3",
+    "kotlinx-collections",
+    "kotlinx-serialization", # 想要序列化还需要引入 kotlin-serialization 插件
+    # rxjava 所有模块都需要
+    "rxjava",
+    "rxjava-android",
+    "rxjava-kotlin",
+    # 路由及服务提供所有模块都需要
+    "arouter",
+    "autoService"
+]
+
+views = [
+    "androidx-constraintlayout",
+    "androidx-recyclerview",
+    "androidx-cardview",
+    "androidx-viewpager2",
+    "androidx-swiperefreshlayout",
+    "material",
+    "flexbox",
+]
+
+network = [
+    "okhttp",
+    "retrofit",
+    "gson",
+    "rxjava",
+    "rxjava-android",
+    "rxjava-kotlin",
+]
+
+# 比较出名的刷新控件 https://github.com/scwang90/SmartRefreshLayout
+# 但安卓自带的 Swiperefreshlayout 也能满足大部分需求
+smartRefreshLayouts = [
+    "smartRefreshLayout",
+    "smartRefreshLayout-header-classics",
+    "smartRefreshLayout-header-radar",
+    "smartRefreshLayout-header-falsify",
+    "smartRefreshLayout-header-material",
+    "smartRefreshLayout-header-two-level",
+    "smartRefreshLayout-footer-classics",
+    "smartRefreshLayout-footer-ball",
+]
+
+
+

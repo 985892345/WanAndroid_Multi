@@ -84,7 +84,7 @@ abstract class BaseBindActivity<VB : ViewBinding> : BaseActivity() {
     "打个标记，因为使用了 ViewBinding，防止你忘记删除这个",
     level = DeprecationLevel.ERROR, replaceWith = ReplaceWith("")
   )
-  override fun setContentView(view: View) {
+  override fun setContentView(view: View?) {
     super.setContentView(view)
   }
 }

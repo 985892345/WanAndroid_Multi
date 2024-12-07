@@ -5,8 +5,39 @@
       <module name="build_logic.convention" target="1.8" />
       <module name="build_logic.convention.main" target="1.8" />
       <module name="build_logic.convention.test" target="1.8" />
+      <module name="build_logic.core.manager" target="11" />
+      <module name="build_logic.core.manager.main" target="11" />
+      <module name="build_logic.core.manager.test" target="11" />
+      <module name="build_logic.core.project" target="11" />
+      <module name="build_logic.core.project.main" target="11" />
+      <module name="build_logic.core.project.test" target="11" />
+      <module name="build_logic.core.versions" target="11" />
+      <module name="build_logic.core.versions.main" target="11" />
+      <module name="build_logic.core.versions.test" target="11" />
       <module name="build_logic.main" target="1.8" />
+      <module name="build_logic.plugin.cache" target="11" />
+      <module name="build_logic.plugin.cache.main" target="11" />
+      <module name="build_logic.plugin.cache.test" target="11" />
+      <module name="build_logic.plugin.checker" target="11" />
+      <module name="build_logic.plugin.checker.main" target="11" />
+      <module name="build_logic.plugin.checker.test" target="11" />
       <module name="build_logic.test" target="1.8" />
+      <module name="WanAndroid_Multi.api_init" target="11" />
+      <module name="WanAndroid_Multi.lib_account" target="11" />
+      <module name="WanAndroid_Multi.lib_account.api_account" target="11" />
+      <module name="WanAndroid_Multi.lib_base" target="11" />
+      <module name="WanAndroid_Multi.lib_config" target="11" />
+      <module name="WanAndroid_Multi.lib_crash" target="11" />
+      <module name="WanAndroid_Multi.lib_crash.api_crash" target="11" />
+      <module name="WanAndroid_Multi.lib_debug" target="11" />
+      <module name="WanAndroid_Multi.lib_single" target="11" />
+      <module name="WanAndroid_Multi.lib_utils" target="11" />
+      <module name="WanAndroid_Multi.module_app" target="11" />
+      <module name="WanAndroid_Multi.module_login" target="11" />
+      <module name="WanAndroid_Multi.module_login.api_login" target="11" />
+      <module name="WanAndroid_Multi.module_main" target="11" />
+      <module name="WanAndroid_Multi.module_test" target="11" />
+      <module name="WanAndroid_Multi.module_test.api_test" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

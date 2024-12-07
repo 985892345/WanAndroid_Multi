@@ -1,3 +1,3 @@
 plugins {
-  id("module-manager")
+  id("manager.library")
 }

@@ -1,6 +1,6 @@
-package check
-
 import org.gradle.api.Project
+import rule.ModuleDependCheckRule
+import rule.ModuleNamespaceCheckRule
 
 /**
  * 用于检查 Android 项目是否规范
@@ -11,38 +11,25 @@ import org.gradle.api.Project
 object AndroidProjectChecker {
   
   // TODO 在这里进行注册
-  private val checkRules = arrayOf<ICheckRule>(
-//    ModuleNamespaceCheckRule
+  private val checkRules = arrayOf(
+    ModuleNamespaceCheckRule,
+    ModuleDependCheckRule,
   )
   
   /**
    * 配置插件前触发
    */
-  fun configBefore(project: Project) {
+  fun config(project: Project) {
     try {
       checkRules.forEach {
-        it.onConfigBefore(project)
+        it.onConfig(project)
       }
     } catch (e: RuntimeException) {
       println("项目检查工具发现问题：${e.message}")
       throw RuntimeException(e.message +  hint)
     }
   }
-  
-  /**
-   * 配置插件后触发
-   */
-  fun configAfter(project: Project) {
-    try {
-      checkRules.forEach {
-        it.onConfigAfter(project)
-      }
-    } catch (e: RuntimeException) {
-      println("项目检查工具发现问题：${e.message}")
-      throw RuntimeException(e.message + hint)
-    }
-  }
-  
+
   // gradle 默然字符集会导致中文乱码，所以这里单独写了个英文提示
   private val hint = """
     
@@ -52,4 +39,12 @@ object AndroidProjectChecker {
     =====================================================================================================
     
   """.trimIndent()
+
+  interface ICheckRule {
+    /**
+     * 配置时触发
+     */
+    @kotlin.jvm.Throws(RuntimeException::class)
+    fun onConfig(project: Project)
+  }
 }
